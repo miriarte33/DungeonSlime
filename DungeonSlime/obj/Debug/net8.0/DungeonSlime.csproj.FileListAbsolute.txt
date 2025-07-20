@@ -31,3 +31,5 @@ C:\Projects\DungeonSlime\DungeonSlime\obj\Debug\net8.0\refint\DungeonSlime.dll
 C:\Projects\DungeonSlime\DungeonSlime\obj\Debug\net8.0\DungeonSlime.pdb
 C:\Projects\DungeonSlime\DungeonSlime\obj\Debug\net8.0\DungeonSlime.genruntimeconfig.cache
 C:\Projects\DungeonSlime\DungeonSlime\obj\Debug\net8.0\ref\DungeonSlime.dll
+C:\Projects\DungeonSlime\DungeonSlime\bin\Debug\net8.0\Content\images\logo.xnb
+C:\Projects\DungeonSlime\DungeonSlime\obj\Debug\net8.0\DungeonSlime.sourcelink.json
