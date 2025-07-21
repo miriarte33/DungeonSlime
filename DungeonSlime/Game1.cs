@@ -2,12 +2,14 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGameLibrary;
+using MonoGameLibrary.Graphics;
 
 namespace DungeonSlime;
 
 public class Game1 : Core
 {
-    private Texture2D _logo;
+    private TextureRegion _slime;
+    private TextureRegion _bat;
 
     public Game1() : base("Dungeon Slime", 1280, 720, false)
     {
@@ -23,8 +25,18 @@ public class Game1 : Core
 
     protected override void LoadContent()
     {
-        // TODO: use this.Content to load your game content here
-        _logo = Content.Load<Texture2D>("images/logo");
+        var atlasTexture = Content.Load<Texture2D>("images/atlas");
+        // Create a TextureAtlas instance out of the Texture2D made from the atlas file.
+        var atlas = new TextureAtlas(atlasTexture);
+
+        // add the slime and the bat regions.
+        atlas.AddRegion("slime", 0, 0, 20, 20);
+
+        atlas.AddRegion("bat", 20, 0, 20, 20);
+
+        _slime = atlas.GetRegion("slime");
+        _bat = atlas.GetRegion("bat");
+
         base.LoadContent();
     }
 
@@ -42,44 +54,13 @@ public class Game1 : Core
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
-        var iconSourceRect = new Rectangle(0, 0, 128, 128);
-        var wordmarkSourceRect = new Rectangle(150, 34, 458, 58);
+        SpriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
+        // Draw the slime at a scale of 4x
+        _slime.Draw(SpriteBatch, Vector2.Zero, Color.White, 0.0f, Vector2.One, 4.0f, SpriteEffects.None, 0.0f);
+        // Put the bat 10px to the right of the slime.
+        _bat.Draw(SpriteBatch, new Vector2(_slime.Width * 4.0f + 10, 0), Color.White, 0.0f, Vector2.One, 4.0f, SpriteEffects.None, 0.0f);
 
-        SpriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack);
-        // Draw only the icon portion of the texture.
-        SpriteBatch.Draw(
-            _logo,              // texture
-            new Vector2(        // position
-                Window.ClientBounds.Width,
-                Window.ClientBounds.Height) * 0.5f,
-            iconSourceRect,     // sourceRectangle
-            Color.White,        // color
-            0.0f,               // rotation
-            new Vector2(        // origin
-                iconSourceRect.Width,
-                iconSourceRect.Height) * 0.5f,
-            1.0f,               // scale
-            SpriteEffects.None, // effects
-            1.0f                // layerDepth
-        );
-
-        // Draw only the word mark portion of the texture.
-        SpriteBatch.Draw(
-            _logo,              // texture
-            new Vector2(        // position
-              Window.ClientBounds.Width,
-              Window.ClientBounds.Height) * 0.5f,
-            wordmarkSourceRect, // sourceRectangle
-            Color.White,        // color
-            0.0f,               // rotation
-            new Vector2(        // origin
-              wordmarkSourceRect.Width,
-              wordmarkSourceRect.Height) * 0.5f,
-            1.0f,               // scale
-            SpriteEffects.None, // effects
-            0.0f                // layerDepth
-        );
         SpriteBatch.End();
 
         base.Draw(gameTime);
