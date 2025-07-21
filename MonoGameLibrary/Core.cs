@@ -2,6 +2,8 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using MonoGameLibrary.Input;
 
 namespace MonoGameLibrary;
 
@@ -35,6 +37,16 @@ public class Core : Game
     public static new ContentManager Content { get; private set; }
 
     /// <summary>
+    /// Gets a reference to the input management system.
+    /// </summary>
+    public static InputManager Input { get; private set; }
+
+    /// <summary>
+    /// Gets or Sets a value that indicates if the game should exit when the esc key on the keyboard is pressed.
+    /// </summary>
+    public static bool ExitOnEscape { get; set; }
+
+    /// <summary>
     /// Creates a new Core instance.
     /// </summary>
     /// <param name="title">The title to display in the title bar of the game window.</param>
@@ -53,12 +65,13 @@ public class Core : Game
         s_instance = this;
 
         // Create a new graphics device manager.
-        Graphics = new GraphicsDeviceManager(this);
-
-        // Set the graphics defaults.
-        Graphics.PreferredBackBufferWidth = width;
-        Graphics.PreferredBackBufferHeight = height;
-        Graphics.IsFullScreen = fullScreen;
+        Graphics = new GraphicsDeviceManager(this)
+        {
+            // Set the graphics defaults.
+            PreferredBackBufferWidth = width,
+            PreferredBackBufferHeight = height,
+            IsFullScreen = fullScreen
+        };
 
         // Apply the graphic presentation changes.
         Graphics.ApplyChanges();
@@ -87,5 +100,21 @@ public class Core : Game
 
         // Create the sprite batch instance.
         SpriteBatch = new SpriteBatch(GraphicsDevice);
+
+        // Create a new input manager.
+        Input = new InputManager();
+    }
+
+    protected override void Update(GameTime gameTime)
+    {
+        // Update the input manager.
+        Input.Update(gameTime);
+
+        if (ExitOnEscape && Input.Keyboard.IsKeyDown(Keys.Escape))
+        {
+            Exit();
+        }
+
+        base.Update(gameTime);
     }
 }
