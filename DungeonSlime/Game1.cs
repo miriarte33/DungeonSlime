@@ -8,8 +8,8 @@ namespace DungeonSlime;
 
 public class Game1 : Core
 {
-    private TextureRegion _slime;
-    private TextureRegion _bat;
+    private Sprite _slime;
+    private Sprite _bat;
 
     public Game1() : base("Dungeon Slime", 1280, 720, false)
     {
@@ -26,8 +26,11 @@ public class Game1 : Core
     protected override void LoadContent()
     {
         var atlas = TextureAtlas.FromFile(Content, "images/atlas-definition.xml");
-        _slime = atlas.GetRegion("slime");
-        _bat = atlas.GetRegion("bat");
+        _slime = atlas.CreateSprite("slime");
+        _slime.Scale = new Vector2(4.0f, 4.0f);
+
+        _bat = atlas.CreateSprite("bat");
+        _bat.Scale = new Vector2(4.0f, 4.0f);
 
         base.LoadContent();
     }
@@ -49,9 +52,9 @@ public class Game1 : Core
         SpriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
         // Draw the slime at a scale of 4x
-        _slime.Draw(SpriteBatch, Vector2.Zero, Color.White, 0.0f, Vector2.One, 4.0f, SpriteEffects.None, 0.0f);
+        _slime.Draw(SpriteBatch, Vector2.One);
         // Put the bat 10px to the right of the slime.
-        _bat.Draw(SpriteBatch, new Vector2(_slime.Width * 4.0f + 10, 0), Color.White, 0.0f, Vector2.One, 4.0f, SpriteEffects.None, 0.0f);
+        _bat.Draw(SpriteBatch, new Vector2(_slime.Width + 10, 0));
 
         SpriteBatch.End();
 
