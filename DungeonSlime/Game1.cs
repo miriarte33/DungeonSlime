@@ -25,15 +25,7 @@ public class Game1 : Core
 
     protected override void LoadContent()
     {
-        var atlasTexture = Content.Load<Texture2D>("images/atlas");
-        // Create a TextureAtlas instance out of the Texture2D made from the atlas file.
-        var atlas = new TextureAtlas(atlasTexture);
-
-        // add the slime and the bat regions.
-        atlas.AddRegion("slime", 0, 0, 20, 20);
-
-        atlas.AddRegion("bat", 20, 0, 20, 20);
-
+        var atlas = TextureAtlas.FromFile(Content, "images/atlas-definition.xml");
         _slime = atlas.GetRegion("slime");
         _bat = atlas.GetRegion("bat");
 
