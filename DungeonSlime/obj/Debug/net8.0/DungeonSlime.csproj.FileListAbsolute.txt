@@ -35,3 +35,4 @@ C:\Projects\DungeonSlime\DungeonSlime\bin\Debug\net8.0\Content\images\logo.xnb
 C:\Projects\DungeonSlime\DungeonSlime\obj\Debug\net8.0\DungeonSlime.sourcelink.json
 C:\Projects\DungeonSlime\DungeonSlime\bin\Debug\net8.0\Content\images\atlas.xnb
 C:\Projects\DungeonSlime\DungeonSlime\bin\Debug\net8.0\Content\images\atlas-definition.xml
+C:\Projects\DungeonSlime\DungeonSlime\bin\Debug\net8.0\Content\images\tilemap-definition.xml
