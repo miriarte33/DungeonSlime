@@ -40,3 +40,4 @@ C:\Projects\DungeonSlime\DungeonSlime\bin\Debug\net8.0\Content\audio\bounce.xnb
 C:\Projects\DungeonSlime\DungeonSlime\bin\Debug\net8.0\Content\audio\collect.xnb
 C:\Projects\DungeonSlime\DungeonSlime\bin\Debug\net8.0\Content\audio\theme.ogg
 C:\Projects\DungeonSlime\DungeonSlime\bin\Debug\net8.0\Content\audio\theme.xnb
+C:\Projects\DungeonSlime\DungeonSlime\bin\Debug\net8.0\Content\fonts\04B_30.xnb
