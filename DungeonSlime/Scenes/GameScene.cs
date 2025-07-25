@@ -59,9 +59,6 @@ public class GameScene : Scene
     // LoadContent is called during base.Initialize().
     base.Initialize();
 
-    // During the game scene, we want to disable exit on escape. Instead,
-    // the escape key will be used to return back to the title screen
-    Core.ExitOnEscape = false;
 
     Rectangle screenBounds = Core.GraphicsDevice.PresentationParameters.Bounds;
 

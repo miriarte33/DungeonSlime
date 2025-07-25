@@ -41,9 +41,6 @@ public class TitleScene : Scene
     // LoadContent is called during base.Initialize().
     base.Initialize();
 
-    // While on the title screen, we can enable exit on escape so the player
-    // can close the game by pressing the escape key.
-    Core.ExitOnEscape = true;
 
     // Set the position and origin for the Dungeon text.
     Vector2 size = _font5x.MeasureString(DUNGEON_TEXT);
@@ -72,6 +69,12 @@ public class TitleScene : Scene
 
   public override void Update(GameTime gameTime)
   {
+    // If the user presses escape, exit the game.
+    if (Core.Input.Keyboard.WasKeyJustPressed(Keys.Escape))
+    {
+      Core.Instance.Exit();
+    }
+
     // If the user presses enter, switch to the game scene.
     if (Core.Input.Keyboard.WasKeyJustPressed(Keys.Enter))
     {
