@@ -2,9 +2,9 @@ namespace MonoGameLibrary.Input;
 
 public enum MouseButton
 {
-  Left,
-  Middle,
-  Right,
-  XButton1,
-  XButton2
+    Left,
+    Middle,
+    Right,
+    XButton1,
+    XButton2
 }

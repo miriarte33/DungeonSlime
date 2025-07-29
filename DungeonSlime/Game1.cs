@@ -21,7 +21,7 @@ public class Game1 : Core
         base.Initialize();
 
         // Start playing the background music.
-        Audio.PlaySong(_themeSong);
+        MonoGameLibrary.Audio.AudioController.PlaySong(_themeSong);
 
         // Initialize the Gum UI service
         InitializeGum();
